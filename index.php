@@ -1,3 +1,4 @@
+<?php include 'data.php'; ?>
 <!DOCTYPE html>
 <html>
 
@@ -81,24 +82,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="d-flex mr-auto flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav  ">
-                  <li class="nav-item active">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="about.html"> About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="treatment.html">Treatment</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="doctor.html">Doctors</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="testimonial.html">Testimonial</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                  </li>
+<?php foreach($nav_categories as $category): ?>
+  
+    <li class="nav-item <?= $category['is_active'] ? 'active' : '' ?>">
+      <a class="nav-link" href="<?= $category['link'] ?>">
+        <?= $category['name'] ?>
+        
+        <?php if($category['is_active']): ?>
+          <span class="sr-only">(current)</span>
+        <?php endif; ?>
+        
+      </a>
+    </li>
+    
+  <?php endforeach; ?>
                 </ul>
               </div>
               <div class="quote_btn-container">
@@ -265,17 +262,17 @@
               <div class="form-group col-lg-4">
                 <label for="inputDoctorName">Doctor's Name</label>
                 <select name="" class="form-control wide" id="inputDoctorName">
-                  <option value="Normal distribution ">Normal distribution </option>
-                  <option value="Normal distribution ">Normal distribution </option>
-                  <option value="Normal distribution ">Normal distribution </option>
+                  <option value="Normal distribution ">Dr. Hannah Smith </option>
+                  <option value="Normal distribution ">Dr. Jennifer Davis </option>
+                  <option value="Normal distribution ">Dr. Marco Rossi </option>
                 </select>
               </div>
               <div class="form-group col-lg-4">
                 <label for="inputDepartmentName">Department's Name</label>
                 <select name="" class="form-control wide" id="inputDepartmentName">
-                  <option value="Normal distribution ">Normal distribution </option>
-                  <option value="Normal distribution ">Normal distribution </option>
-                  <option value="Normal distribution ">Normal distribution </option>
+                  <option value="Normal distribution ">General Surgery </option>
+                  <option value="Normal distribution ">Pediatric </option>
+                  <option value="Normal distribution ">Cardiology </option>
                 </select>
               </div>
             </div>
