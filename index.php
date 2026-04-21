@@ -70,7 +70,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index.php">
               <img src="images/logo.png" alt="">
             </a>
 
@@ -82,20 +82,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="d-flex mr-auto flex-column flex-lg-row align-items-center">
                 <ul class="navbar-nav  ">
-<?php foreach($nav_categories as $category): ?>
-  
-    <li class="nav-item <?= $category['is_active'] ? 'active' : '' ?>">
-      <a class="nav-link" href="<?= $category['link'] ?>">
-        <?= $category['name'] ?>
-        
-        <?php if($category['is_active']): ?>
-          <span class="sr-only">(current)</span>
-        <?php endif; ?>
-        
-      </a>
-    </li>
-    
-  <?php endforeach; ?>
+                  <?php foreach($nav_categories as $category): ?>
+                      <li class="nav-item <?= $category['is_active'] ? 'active' : '' ?>">
+                        <a class="nav-link" href="<?= $category['link'] ?>">
+                          <?= $category['name'] ?>
+                          <?php if($category['is_active']): ?>
+                            <span class="sr-only">(current)</span>
+                          <?php endif; ?>
+                        </a>
+                      </li>
+                  <?php endforeach; ?>
                 </ul>
               </div>
               <div class="quote_btn-container">
@@ -130,102 +126,40 @@
       </div>
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    <div class="play_btn">
-                      <button>
-                        <i class="fa fa-play" aria-hidden="true"></i>
-                      </button>
+          <?php foreach($slider_items as $index => $slide): ?>
+            <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+              <div class="container ">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <div class="play_btn">
+                        <button>
+                          <i class="fa fa-play" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <h1>
+                        <?= $slide['title_top'] ?> <br>
+                        <span>
+                          <?= $slide['title_span'] ?>
+                        </span>
+                      </h1>
+                      <p>
+                        <?= $slide['description'] ?>
+                      </p>
+                      <a href="<?= $slide['btn_link'] ?>">
+                        <?= $slide['btn_text'] ?>
+                      </a>
                     </div>
-                    <h1>
-                      Mico <br>
-                      <span>
-                        Hospital
-                      </span>
-                    </h1>
-                    <p>
-                      Providing world-class medical care for you and your family. Our expert team of doctors is here to ensure your health and well-being with state-of-the-art facilities and compassionate care.
-                    </p>
-                    <a href="">
-                      Contact Us
-                    </a>
                   </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img.jpg" alt="">
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="<?= $slide['image'] ?>" alt="">
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    <div class="play_btn">
-                      <button>
-                        <i class="fa fa-play" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                    <h1>
-                      Mico <br>
-                      <span>
-                        Hospital
-                      </span>
-                    </h1>
-                    <p>
-                      Advanced technology meets compassionate care. We offer 24/7 emergency services and specialized treatments, ensuring that you and your loved ones are always in safe hands.
-                    </p>
-                    <a href="">
-                      Contact Us
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img2.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="detail-box">
-                    <div class="play_btn">
-                      <button>
-                        <i class="fa fa-play" aria-hidden="true"></i>
-                      </button>
-                    </div>
-                    <h1>
-                      Mico <br>
-                      <span>
-                        Hospital
-                      </span>
-                    </h1>
-                    <p>
-                      Your journey to better health starts here. From preventive check-ups to complex surgeries, our dedicated medical professionals are committed to supporting you every step of the way.
-                    </p>
-                    <a href="">
-                      Contact Us
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="img-box">
-                    <img src="images/slider-img3.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
         <div class="carousel_btn-box">
           <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
@@ -353,78 +287,26 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/t1.png" alt="">
+        <?php foreach($treatments as $treatment): ?>
+            <div class="col-md-6 col-lg-3">
+              <div class="box ">
+                <div class="img-box">
+                  <img src="<?= $treatment['image'] ?>" alt="<?= $treatment['title'] ?>">
+                </div>
+                <div class="detail-box">
+                  <h4>
+                    <?= $treatment['title'] ?>
+                  </h4>
+                  <p>
+                    <?= $treatment['description'] ?>
+                  </p>
+                  <a href="">
+                    Read More
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="detail-box">
-              <h4>
-                Nephrologist Care
-              </h4>
-              <p>
-                Expert care for kidney-related conditions, offering advanced diagnostics and personalized treatment plans for our patients.
-              </p>
-              <a href="">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/t2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Eye Care
-              </h4>
-              <p>
-                Comprehensive vision services, from routine eye exams to advanced surgical procedures for optimal eye health.
-              </p>
-              <a href="">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/t3.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Pediatrician Clinic
-              </h4>
-              <p>
-                Specialized and compassionate medical care for infants, children, and adolescents in a warm, friendly environment.
-              </p>
-              <a href="">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="box ">
-            <div class="img-box">
-              <img src="images/t4.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h4>
-                Parental Care
-              </h4>
-              <p>
-                Guiding expecting parents with top-tier prenatal and postnatal care to ensure a safe and healthy pregnancy journey.
-              </p>
-              <a href="">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </section>
@@ -442,93 +324,33 @@
       </div>
       <div class="carousel-wrap ">
         <div class="owl-carousel team_carousel">
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/team1.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Dr. Hannah Smith
-                </h5>
-                <h6>
-                  Chief Medical Officer
-                </h6>
-                <div class="social_box">
-                  <a href="">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
+              <?php foreach($doctors as $doctor): ?>
+                <div class="item">
+                  <div class="box">
+                    <div class="img-box">
+                      <img src="<?= $doctor['image'] ?>" alt="<?= $doctor['name'] ?>" />
+                    </div>
+                    <div class="detail-box">
+                      <h5><?= $doctor['name'] ?></h5>
+                      <h6><?= $doctor['specialty'] ?></h6>
+                      <div class="social_box">
+                        <a href="<?= $doctor['facebook'] ?>">
+                          <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+                        <a href="<?= $doctor['twitter'] ?>">
+                          <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="<?= $doctor['linkedin'] ?>">
+                          <i class="fa fa-linkedin" aria-hidden="true"></i>
+                        </a>
+                        <a href="<?= $doctor['instagram'] ?>">
+                          <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/team2.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Dr. Jennifer Davis
-                </h5>
-                <h6>
-                  Lead Pediatrician
-                </h6>
-                <div class="social_box">
-                  <a href="">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/team3.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Dr. Marco Rossi
-                </h5>
-                <h6>
-                  Senior Cardiologist
-                </h6>
-                <div class="social_box">
-                  <a href="">
-                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                  <a href="">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+              <?php endforeach; ?>
         </div>
       </div>
     </div>
@@ -549,60 +371,26 @@
     <div class="container px-0">
       <div id="customCarousel2" class="carousel  carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>
-                    Sarah Johnson
-                  </h5>
-                  <h6>
-                    Surgical Patient
-                  </h6>
+          <?php foreach($testimonials as $index => $review): ?>
+            <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
+              <div class="box">
+                <div class="client_info">
+                  <div class="client_name">
+                    <h5>
+                      <?= $review['name'] ?>
+                    </h5>
+                    <h6>
+                      <?= $review['status'] ?>
+                    </h6>
+                  </div>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
                 </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                <p>
+                  <?= $review['text'] ?>
+                </p>
               </div>
-              <p>
-                The care I received at Mico Hospital was exceptional. The doctors were highly attentive, and the nursing staff made me feel incredibly comfortable and safe during my entire recovery.
-              </p>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>
-                    Michael Roberts
-                  </h5>
-                  <h6>
-                    Father of a Patient
-                  </h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                Dr. Jennifer and her pediatric team are amazing! They were so gentle and patient with our little boy. It’s such a relief to have a hospital you can truly trust with your children.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>
-                    Emily Chen
-                  </h5>
-                  <h6>
-                    Cardiac Patient
-                  </h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                I came in with chest pains and was immediately taken care of. Dr. Marco's quick diagnosis and professional approach were outstanding. The facilities here are truly top-notch.
-              </p>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
         <div class="carousel_btn-box">
           <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
