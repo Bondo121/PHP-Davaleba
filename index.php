@@ -181,48 +181,48 @@
   <!-- book section -->
 
   <section class="book_section layout_padding">
-    <div class="container">
+<div class="container">
       <div class="row">
         <div class="col">
-          <form>
+          <form action="booking.php" method="POST">
             <h4>
               BOOK <span>APPOINTMENT</span>
             </h4>
             <div class="form-row ">
               <div class="form-group col-lg-4">
                 <label for="inputPatientName">Patient Name </label>
-                <input type="text" class="form-control" id="inputPatientName" placeholder="">
+                <input type="text" name="patient_name" class="form-control" id="inputPatientName" placeholder="" required>
               </div>
               <div class="form-group col-lg-4">
                 <label for="inputDoctorName">Doctor's Name</label>
-                <select name="" class="form-control wide" id="inputDoctorName">
-                  <option value="Normal distribution ">Dr. Hannah Smith </option>
-                  <option value="Normal distribution ">Dr. Jennifer Davis </option>
-                  <option value="Normal distribution ">Dr. Marco Rossi </option>
+                <select name="doctor_name" class="form-control wide" id="inputDoctorName">
+                  <?php foreach($doctors as $doctor): ?>
+                    <option value="<?= $doctor['name'] ?>"><?= $doctor['name'] ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
               <div class="form-group col-lg-4">
                 <label for="inputDepartmentName">Department's Name</label>
-                <select name="" class="form-control wide" id="inputDepartmentName">
-                  <option value="Normal distribution ">General Surgery </option>
-                  <option value="Normal distribution ">Pediatric </option>
-                  <option value="Normal distribution ">Cardiology </option>
+                <select name="department_name" class="form-control wide" id="inputDepartmentName">
+                  <?php foreach($treatments as $treatment): ?>
+                    <option value="<?= $treatment['title'] ?>"><?= $treatment['title'] ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
             </div>
             <div class="form-row ">
               <div class="form-group col-lg-4">
                 <label for="inputPhone">Phone Number</label>
-                <input type="number" class="form-control" id="inputPhone" placeholder="XXXXXXXXXX">
+                <input type="number" name="phone" class="form-control" id="inputPhone" placeholder="XXXXXXXXXX" required>
               </div>
               <div class="form-group col-lg-4">
                 <label for="inputSymptoms">Symptoms</label>
-                <input type="text" class="form-control" id="inputSymptoms" placeholder="">
+                <input type="text" name="symptoms" class="form-control" id="inputSymptoms" placeholder="">
               </div>
               <div class="form-group col-lg-4">
                 <label for="inputDate">Choose Date </label>
                 <div class="input-group date" id="inputDate" data-date-format="mm-dd-yyyy">
-                  <input type="text" class="form-control" readonly>
+                  <input type="text" name="appointment_date" class="form-control" readonly>
                   <span class="input-group-addon date_icon">
                     <i class="fa fa-calendar" aria-hidden="true"></i>
                   </span>
@@ -418,21 +418,21 @@
       <div class="row">
         <div class="col-md-7">
           <div class="form_container">
-            <form action="">
+            <form action="getintouch.php" method="POST">
               <div>
-                <input type="text" placeholder="Full Name" />
+                <input type="text" name="full_name" placeholder="Full Name" required />
               </div>
               <div>
-                <input type="email" placeholder="Email" />
+                <input type="email" name="email" placeholder="Email" required />
               </div>
               <div>
-                <input type="text" placeholder="Phone Number" />
+                <input type="text" name="phone" placeholder="Phone Number" required />
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <input type="text" name="message" class="message-box" placeholder="Message" required />
               </div>
               <div class="btn_box">
-                <button>
+                <button type="submit">
                   SEND
                 </button>
               </div>
