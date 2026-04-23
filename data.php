@@ -1,5 +1,5 @@
 <?php
-// Массив для навигационного меню (Категории)
+// Categories
 $nav_categories = [
     [
         "name" => "Home",
@@ -33,7 +33,7 @@ $nav_categories = [
     ]
 ];
 
-// Массив для Слайдера (Hero Section)
+// Slides
 $slider_items = [
     [
         "title_top"   => "Mico",
@@ -61,7 +61,7 @@ $slider_items = [
     ]
 ];
 
-// Массив для секции Hospital Treatment
+// Hospital Treatment
 $treatments = [
     [
         "title" => "Nephrologist Care",
@@ -85,7 +85,7 @@ $treatments = [
     ]
 ];
 
-// Массив для секции Our Doctors
+// Our Doctors
 $doctors = [
     [
         "name" => "Dr. Hannah Smith",
@@ -116,7 +116,7 @@ $doctors = [
     ]
 ];
 
-// Массив для секции Testimonial (Отзывы)
+// Testimonial)
 $testimonials = [
     [
         "name" => "Sarah Johnson",

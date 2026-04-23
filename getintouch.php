@@ -20,7 +20,7 @@
           <div class="detail-box">
             <div class="heading_container heading_center">
               <h2>
-                Your message is <span>submitted.</span>
+                Your form is <span>submitted.</span>
               </h2>
             </div>
             
